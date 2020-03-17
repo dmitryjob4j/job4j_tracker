@@ -17,8 +17,8 @@ public class Tracker {
 
     public Item findById(String id) {
         Item rsl = null;
-        for (int index = 0; index < size; index++) {
-            Item item = items[index];
+        for (int i = 0; i < size; i++) {
+            Item item = items[i];
             if (item.getId().equals(id)) {
                 rsl = item;
                 break;
