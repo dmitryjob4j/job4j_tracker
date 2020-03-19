@@ -1,4 +1,4 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.oop;
 
 /**
  * 1.1. Создание объекта[#242913]. пример
