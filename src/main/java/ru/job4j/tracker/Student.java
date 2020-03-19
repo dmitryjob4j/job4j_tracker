@@ -1,16 +1,16 @@
 package ru.job4j.tracker;
 
 /**
- * 1.2. Вызов метода объекта[#242915]
- * Задание создать метод song(), и вызвать его обьектом petya три раза.
+ * 1.3. Вызов метода с аргументами.[#242916]
+ * пример вызова обьекта с метода с параметром
  *
  * @author dstepanov haoos@inbox.ru
  * @since 19.03.2020
  */
 
 public class Student {
-    public void music() {
-        System.out.println("Tra tra tra");
+    public void music(String lyrics) {
+        System.out.println("I can sign a song : " + lyrics);
     }
 
     public void song() {
@@ -19,11 +19,7 @@ public class Student {
 
     public static void main(String[] args) {
         Student petya = new Student();
-        petya.music();
-        petya.song();
-        petya.music();
-        petya.song();
-        petya.music();
-        petya.song();
+        String song = "I believe, I can fly";
+        petya.music(song);
     }
 }
