@@ -7,10 +7,7 @@ package ru.job4j.tracker.oop;
  *
  * @since 20.03.2020
  */
-public class Wolf {
-    public void eat(Girl girl) {
-    }
-
+public class Fox {
     public void tryEat(Ball ball) {
     }
 }
