@@ -2,18 +2,20 @@ package ru.job4j.tracker.oop;
 
 /**
  * 5.1. Зона видимости переменных.[#242920]
- * исправлено имя области поля arrayPo
+ * переименована переменная метода "to"
+ *
+ * @version 2
  */
 public class Reduce {
-    private int[] arrayPo;
+    private int[] array;
 
-    public void to(int[] array) {
-        arrayPo = array;
+    public void to(int[] mas) {
+        array = mas;
     }
 
     public void print() {
-        for (int i = 0; i < arrayPo.length; i++) {
-            System.out.print(arrayPo[i]);
+        for (int i = 0; i < array.length; i++) {
+            System.out.print(array[i]);
         }
     }
 
