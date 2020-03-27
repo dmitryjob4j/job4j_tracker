@@ -102,7 +102,26 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         int i = indexOf(id);
-        items[i].setName(item.getName());
-        return true;
+        if (i != -1) {
+            items[i].setName(item.getName());
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * 7. метод удаления заявки
+     */
+    public boolean delete(String id) {
+        int i = indexOf(id);
+        if (i != -1) {
+            System.arraycopy(items, i + 1, items, i, size - i);
+            items[size - 1] = null;
+            size--;
+            return true;
+        } else {
+            return false;
+        }
     }
 }

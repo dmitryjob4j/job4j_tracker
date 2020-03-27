@@ -3,6 +3,7 @@ package ru.job4j.tracker;
 import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
+import static org.hamcrest.Matchers.nullValue;
 import static org.junit.Assert.assertThat;
 
 public class TrackerTest {
@@ -30,8 +31,9 @@ public class TrackerTest {
         Item[] result = tracker.findAll();
         assertThat(result, is(expect));
     }
+
     @Test
-    public void findByName(){
+    public void findByName() {
         Tracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test2");
@@ -45,8 +47,9 @@ public class TrackerTest {
         Item[] result = tracker.findByName("test2");
         assertThat(result, is(expect));
     }
+
     @Test
-    public void findByID(){
+    public void findByID() {
         Tracker tracker = new Tracker();
         Item item1 = new Item("test1");
         Item item2 = new Item("test2");
@@ -58,8 +61,9 @@ public class TrackerTest {
         tracker.add(item4);
         Item expect = item3;
         Item result = tracker.findById(item3.getId());
-        assertThat(result,is(expect));
+        assertThat(result, is(expect));
     }
+
     @Test
     public void whenReplace() {
         Tracker tracker = new Tracker();
@@ -67,7 +71,17 @@ public class TrackerTest {
         tracker.add(bug);
         String id = bug.getId();
         Item bugWinDesc = new Item("Bug with description");
-        tracker.replace(id,bugWinDesc);
+        tracker.replace(id, bugWinDesc);
         assertThat(tracker.findById(id).getName(), is("Bug with description"));
+    }
+
+    @Test
+    public void whenDelete() {
+        Tracker tracker = new Tracker();
+        Item bug = new Item("bug");
+        tracker.add(bug);
+        String id = bug.getId();
+        tracker.delete(id);
+        assertThat(tracker.findById(id), is(nullValue()));
     }
 }
