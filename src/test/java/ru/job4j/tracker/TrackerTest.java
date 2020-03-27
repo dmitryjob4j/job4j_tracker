@@ -60,4 +60,14 @@ public class TrackerTest {
         Item result = tracker.findById(item3.getId());
         assertThat(result,is(expect));
     }
+    @Test
+    public void whenReplace() {
+        Tracker tracker = new Tracker();
+        Item bug = new Item("Bug");
+        tracker.add(bug);
+        String id = bug.getId();
+        Item bugWinDesc = new Item("Bug with description");
+        tracker.replace(id,bugWinDesc);
+        assertThat(tracker.findById(id).getName(), is("Bug with description"));
+    }
 }

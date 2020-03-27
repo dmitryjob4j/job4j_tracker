@@ -7,8 +7,8 @@ import java.util.Random;
  * 5. Реализовать класс Tracker[#242937]
  * задание.
  *
- * @version 1
- * @since 26.03.2020
+ * @version 2
+ * @since 27.03.2020
  */
 public class Tracker {
     /**
@@ -38,16 +38,7 @@ public class Tracker {
      * @return возврощаем заполненый массив без ячеек Null.
      */
     public Item[] findAll() {
-        Item[] nameWithoutNull = new Item[size];
-        int num = 0;
-        for (int i = 0; i < size; i++) {
-            Item name = items[i];
-            if (name != null) {
-                nameWithoutNull[num] = name;
-                num++;
-            }
-        }
-        return Arrays.copyOf(nameWithoutNull, num);
+        return Arrays.copyOf(items, size);
     }
 
     /**
@@ -75,15 +66,10 @@ public class Tracker {
      * @param id заявки которую ищем.
      */
     public Item findById(String id) {
-        Item rsl = null;
-        for (int i = 0; i < size; i++) {
-            Item item = items[i];
-            if (item.getId().equals(id)) {
-                rsl = item;
-                break;
-            }
-        }
-        return rsl;
+        //Находим индекc
+        int i = indexOf(id);
+        //Если индекс найден возвращаем item, иначе null
+        return i != -1 ? items[i] : null;
     }
 
     /**
@@ -95,5 +81,28 @@ public class Tracker {
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
         //return String.valueOf(ids++);
+    }
+
+    /**
+     * Метод возврощает index по ID
+     */
+    private int indexOf(String id) {
+        int rsl = -1;
+        for (int i = 0; i < size; i++) {
+            if (items[i].getId().equals(id)) {
+                rsl = i;
+                break;
+            }
+        }
+        return rsl;
+    }
+
+    /**
+     * 6 метод замены заявки replace.
+     */
+    public boolean replace(String id, Item item) {
+        int i = indexOf(id);
+        items[i].setName(item.getName());
+        return true;
     }
 }
