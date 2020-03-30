@@ -1,7 +1,7 @@
 package ru.job4j.tracker.profession;
 
 public class Programmer extends Engineer {
-    public String lang;
+    private String lang;
     public String getLang(){
         return lang;
     }

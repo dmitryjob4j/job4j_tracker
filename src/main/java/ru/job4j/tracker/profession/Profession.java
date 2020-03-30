@@ -3,10 +3,10 @@ package ru.job4j.tracker.profession;
 import java.util.Date;
 
 public class Profession {
-    public String name;
-    public String surname;
-    public String education;
-    public String birthday;
+    private String name;
+    private String surname;
+    private String education;
+    private String birthday;
 
     public String getName() {
         return name;
