@@ -7,7 +7,7 @@ import java.util.Random;
  * 5. Реализовать класс Tracker[#242937]
  * задание.
  *
- * @version 4
+ * @version 5
  * @since 27.03.2020
  */
 public class Tracker {
@@ -102,13 +102,14 @@ public class Tracker {
      */
     public boolean replace(String id, Item item) {
         int i = indexOf(id);
+        boolean result = true;
         if (i != -1) {
             item.setId(items[i].getId());
             items[i] = item;
-            return true;
         } else {
-            return false;
+            result = false;
         }
+        return result;
     }
 
     /**
@@ -116,13 +117,14 @@ public class Tracker {
      */
     public boolean delete(String id) {
         int i = indexOf(id);
+        boolean result = true;
         if (i != -1) {
             System.arraycopy(items, i + 1, items, i, size - i);
             items[size - 1] = null;
             size--;
-            return true;
         } else {
-            return false;
+            result = false;
         }
+        return result;
     }
 }
