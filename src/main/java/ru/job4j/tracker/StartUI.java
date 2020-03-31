@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.Scanner;
 import java.util.TimerTask;
 
 /**
@@ -10,15 +9,14 @@ import java.util.TimerTask;
  * @since 30.03.2020
  */
 public class StartUI {
-    public void init(Scanner scaner, Tracker tracker) {
+    public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            int select = Integer.valueOf(scaner.nextLine());
+            int select = input.askInt("Select: ->");
             if (select == 0) {
                 System.out.println("=== Create a new Item ===");
-                System.out.print("Enter name:->");
-                String name = scaner.nextLine();
+                String name = input.askStr("Enter name:->");
                 Item item = new Item(name);
                 tracker.add(item);
             } else if (select == 1) {
@@ -29,12 +27,10 @@ public class StartUI {
                 }
             } else if (select == 2) {
                 System.out.println("=== Edit Item ===");
-                System.out.print("Enter ID edit Item:->");
-                String edit = scaner.nextLine();
+                String edit = input.askStr("Enter ID edit Item:->");
                 Item item = new Item(null);
-                if (tracker.replace(edit,item)) {
-                    System.out.print("Enter new name Item:->");
-                    item.setName(scaner.nextLine());
+                if (tracker.replace(edit, item)) {
+                    item.setName(input.askStr("Enter new name Item:->"));
                     tracker.replace(edit, item);
                     System.out.println("Replace item: " + tracker.findById(edit).getId() + " " + tracker.findById(edit).getName() + ".");
                 } else {
@@ -42,8 +38,7 @@ public class StartUI {
                 }
             } else if (select == 3) {
                 System.out.println("=== Delete Item ===");
-                System.out.print("Enter ID delete Item:->");
-                String delId = scaner.nextLine();
+                String delId = input.askStr("Enter ID delete Item:->");
                 Item delItem = tracker.findById(delId);
                 if (tracker.delete(delId)) {
                     tracker.delete(delId);
@@ -53,8 +48,7 @@ public class StartUI {
                 }
             } else if (select == 4) {
                 System.out.println("=== Find Item by Id ===");
-                System.out.print("Enter ID find Item:->");
-                String id = scaner.nextLine();
+                String id = input.askStr("Enter ID find Item:->");
                 if (tracker.findById(id) != null) {
                     Item findId = tracker.findById(id);
                     System.out.println("Find item by ID:" + findId.getId() + " Name " + findId.getName() + ".");
@@ -63,10 +57,9 @@ public class StartUI {
                 }
             } else if (select == 5) {
                 System.out.println("=== Find Item by name ===");
-                System.out.print("Enter NAME find Item:->");
-                String findName = scaner.nextLine();
+                String findName = input.askStr("Enter NAME find Item:->");
                 Item[] item = tracker.findByName(findName);
-                System.out.print("find Name:");
+                System.out.println("find Name:");
                 for (int i = 0; i < item.length; i++) {
                     System.out.println("ID: " + item[i].getId() + " Nsme: " + item[i].getName());
                 }
@@ -88,13 +81,12 @@ public class StartUI {
         System.out.println("4. Find Item by Id");
         System.out.println("5. Find Item by name");
         System.out.println("6. Exit Program");
-        System.out.println("Select: ->");
         // добавить основной пункт меню.
     }
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
+        Input input = new ConsoleInput();
         Tracker tracker = new Tracker();
-        new StartUI().init(scanner, tracker);
+        new StartUI().init(input, tracker);
     }
 }
