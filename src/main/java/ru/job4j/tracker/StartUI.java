@@ -6,7 +6,7 @@ import java.util.TimerTask;
 /**
  * 2.1. Реализация класса StartUI[#242892]
  *
- * @version 1
+ * @version 2
  * @since 30.03.2020
  */
 public class StartUI {
@@ -31,10 +31,10 @@ public class StartUI {
                 System.out.println("=== Edit Item ===");
                 System.out.print("Enter ID edit Item:->");
                 String edit = scaner.nextLine();
-                if (tracker.findById(edit) != null) {
+                Item item = new Item(null);
+                if (tracker.replace(edit,item)) {
                     System.out.print("Enter new name Item:->");
-                    String newName = scaner.nextLine();
-                    Item item = new Item(newName);
+                    item.setName(scaner.nextLine());
                     tracker.replace(edit, item);
                     System.out.println("Replace item: " + tracker.findById(edit).getId() + " " + tracker.findById(edit).getName() + ".");
                 } else {
@@ -44,8 +44,8 @@ public class StartUI {
                 System.out.println("=== Delete Item ===");
                 System.out.print("Enter ID delete Item:->");
                 String delId = scaner.nextLine();
-                if (tracker.findById(delId) != null) {
-                    Item delItem = tracker.findById(delId);
+                Item delItem = tracker.findById(delId);
+                if (tracker.delete(delId)) {
                     tracker.delete(delId);
                     System.out.println("Item ID: " + delItem.getId() + " Name " + delItem.getName() + " delete.");
                 } else {
@@ -66,7 +66,7 @@ public class StartUI {
                 System.out.print("Enter NAME find Item:->");
                 String findName = scaner.nextLine();
                 Item[] item = tracker.findByName(findName);
-                System.out.println("find Name:");
+                System.out.print("find Name:");
                 for (int i = 0; i < item.length; i++) {
                     System.out.println("ID: " + item[i].getId() + " Nsme: " + item[i].getName());
                 }
