@@ -8,6 +8,6 @@ package ru.job4j.tracker.oop;
  * @since 20.03.2020
  */
 public class Hare {
-    public void tryEat(Ball ball){
+    public void tryEat(Ball ball) {
     }
 }

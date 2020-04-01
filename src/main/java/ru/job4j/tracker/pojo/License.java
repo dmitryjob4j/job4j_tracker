@@ -2,6 +2,7 @@ package ru.job4j.tracker.pojo;
 /**
  * 4. Сравнение моделей. Метод equals.[#242933]
  * задание
+ *
  * @since 26.03.2020
  */
 
@@ -48,13 +49,14 @@ public class License {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         License license = (License) o;
-        return Objects.equals(owner, license.owner) &&
-                Objects.equals(model, license.model) &&
-                Objects.equals(code, license.code) &&
-                Objects.equals(created, license.created);
+        return Objects.equals(owner, license.owner) && Objects.equals(model, license.model) && Objects.equals(code, license.code) && Objects.equals(created, license.created);
     }
 
     @Override
