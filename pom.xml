@@ -6,7 +6,11 @@
 
     <groupId>ru.job4j</groupId>
     <artifactId>tracker</artifactId>
+    <packaging>pom</packaging>
     <version>3.0</version>
+    <modules>
+        <module>ru.job4j.stragery</module>
+    </modules>
 
     <properties>
         <maven.compiler.source>13</maven.compiler.source>
