@@ -1,5 +1,11 @@
 package ru.job4j.ex;
 
+/**
+ * 0.1. java.lang.NullPointerException[#242899]
+ * задача
+ *
+ * @since 04.04.2020
+ */
 public class FindMaxLength {
     public static void main(String[] args) {
         String[] shops = {"Ebay", null, "Amazon", null, "Ozon"};
