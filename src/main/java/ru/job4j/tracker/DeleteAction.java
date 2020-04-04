@@ -12,9 +12,9 @@ public class DeleteAction implements UserAction {
     @Override
     public boolean execute(Input input, Tracker tracker) {
         String delId = input.askStr("Enter ID delete Item:->");
-        Item delItem = tracker.findById(delId);
+        //Item delItem = tracker.findById(delId);
         if (tracker.delete(delId)) {
-            System.out.println("Item ID: " + delItem.getId() + " Name " + delItem.getName() + " delete.");
+            System.out.println("Item delete.");
         } else {
             System.out.println("No such ID was found!");
         }
