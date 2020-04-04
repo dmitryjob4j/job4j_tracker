@@ -22,8 +22,12 @@ public class StartUI {
         while (run) {
             this.showMenu(actions);
             int select = input.askInt("Select: ");
-            UserAction action = actions[select];
-            run = action.execute(input, tracker);
+            if (select <= 6 && select >= 0) {
+                UserAction action = actions[select];
+                run = action.execute(input, tracker);
+            } else {
+                System.out.println("!!! There is no such item !!!");
+            }
         }
     }
 
