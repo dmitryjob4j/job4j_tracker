@@ -1,6 +1,21 @@
 package ru.job4j.tracker;
 
-public class ValidateInput extends ConsoleInput {
+/**
+ * 2. Рефакторинг - Шаблон Декоратор для валидатора.[#242897]
+ *
+ * @since 06.04.2020
+ */
+public class ValidateInput implements Input {
+    private final Input input;
+
+    public ValidateInput(Input input) {
+        this.input = input;
+    }
+
+    @Override
+    public String askStr(String question) {
+        return input.askStr(question);
+    }
 
     @Override
     public int askInt(String question) {
@@ -8,10 +23,10 @@ public class ValidateInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.askInt(question);
+                value = input.askInt(question);
                 invalid = false;
             } catch (NumberFormatException nfe) {
-                System.out.println("Please enter validate data again");
+                System.out.println("Please enter validate data again.");
             }
         } while (invalid);
         return value;
@@ -23,7 +38,7 @@ public class ValidateInput extends ConsoleInput {
         int value = -1;
         do {
             try {
-                value = super.askInt(question, max);
+                value = input.askInt(question, max);
                 invalid = false;
             } catch (IllegalStateException moe) {
                 System.out.println("Please select key from menu.");
