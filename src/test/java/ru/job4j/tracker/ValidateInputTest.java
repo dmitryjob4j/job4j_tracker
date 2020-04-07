@@ -20,7 +20,7 @@ public class ValidateInputTest {
         PrintStream out = System.out;
         System.setOut(new PrintStream(mem));
         ValidateInput input = new ValidateInput(
-                new StubInput(new String[]{"o", "1"})
+                new StubInput(new String[]{"one", "1"})
         );
         input.askInt("Enter");
         assertThat(
@@ -28,5 +28,10 @@ public class ValidateInputTest {
                 is(String.format("Please enter validate data again.%n"))
         );
         System.setOut(out);
+    }
+
+    @Test
+    public void whenInwalidMenu() {
+
     }
 }
