@@ -19,9 +19,8 @@ public class ValidateInputTest {
         ByteArrayOutputStream mem = new ByteArrayOutputStream();
         PrintStream out = System.out;
         System.setOut(new PrintStream(mem));
-        ValidateInput input = new ValidateInput(
-                new StubInput(new String[]{"one", "1"})
-        );
+        String[] data = {"one", "0"};
+        ValidateInput input = new ValidateStubInput(data);
         input.askInt("Enter");
         assertThat(
                 mem.toString(),
@@ -32,6 +31,16 @@ public class ValidateInputTest {
 
     @Test
     public void whenInwalidMenu() {
-
+        ByteArrayOutputStream mem = new ByteArrayOutputStream();
+        PrintStream out = System.out;
+        System.setOut(new PrintStream(mem));
+        String[] data = {"7", "0"};
+        ValidateInput input = new ValidateStubInput(data);
+        input.askInt("Enter", 7);
+        assertThat(
+                mem.toString(),
+                is(String.format("Please select key from menu.%n"))
+        );
+        System.setOut(out);
     }
 }
