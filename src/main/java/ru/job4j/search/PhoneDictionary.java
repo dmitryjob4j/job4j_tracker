@@ -25,13 +25,10 @@ public class PhoneDictionary {
      */
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<Person>();
-        for (int i = 0; i < persons.size(); i++) {
-            if (persons.get(i).getName().contains(key) || persons.get(i).getSurname().contains(key)
-                    || persons.get(i).getPhone().contains(key) || persons.get(i).getAddress().contains(key)) {
-                result.add(new Person(
-                        persons.get(i).getName(), persons.get(i).getSurname(),
-                        persons.get(i).getPhone(), persons.get(i).getAddress()
-                ));
+        for (Person value : persons) {
+            if (value.getName().contains(key) || value.getSurname().contains(key) ||
+                    value.getPhone().contains(key) || value.getAddress().contains(key)) {
+                result.add(new Person(value.getName(), value.getSurname(), value.getPhone(), value.getAddress()));
             }
         }
         return result;
