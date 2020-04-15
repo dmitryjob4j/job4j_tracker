@@ -14,7 +14,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         CreateAction createAction = new CreateAction();
         createAction.execute(input, tracker);
-        Item created = tracker.findAll()[0];
+        Item created = tracker.findAll().get(0);
         Item expected = new Item("Fix PC");
         assertThat(created.getName(), is(expected.getName()));
     }
