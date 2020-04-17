@@ -114,6 +114,7 @@ public class Tracker {
         if (i != -1) {
             item.setId(items.get(i).getId());
             items.set(i, item);
+            result = true;
         }
         return result;
     }
