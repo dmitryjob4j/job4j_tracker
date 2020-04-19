@@ -10,7 +10,7 @@ import java.util.Map;
  * задача.
  *
  * @author Dmitry Stepanov
- * @version 1
+ * @version 2
  * @since 18.04.2020
  */
 public class BankService {
@@ -71,7 +71,7 @@ public class BankService {
         if (user != null) {
             List<Account> accountList = users.get(user);
             for (Account value : accountList) {
-                if (value.getRequisite().contains(requisite)) {
+                if (value.getRequisite().equals(requisite)) {
                     account = value;
                     break;
                 }
