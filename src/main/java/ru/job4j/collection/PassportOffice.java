@@ -10,7 +10,7 @@ import java.util.Map;
  * Клаcc PassportOffice метод add добовляет, метод get возврощает.
  *
  * @author Dmitry Stepanov
- * @version 1
+ * @version 2
  * @since 18.04.2020
  */
 public class PassportOffice {
@@ -26,10 +26,6 @@ public class PassportOffice {
     }
 
     public Citizen get(String passoprt) {
-        Citizen rsl = null;
-            if (citizens.containsKey(passoprt)) {
-                rsl = citizens.get(passoprt);
-            }
-        return rsl;
+        return citizens.get(passoprt);
     }
 }
