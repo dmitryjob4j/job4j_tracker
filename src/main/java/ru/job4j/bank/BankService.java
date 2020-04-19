@@ -10,7 +10,7 @@ import java.util.Map;
  * задача.
  *
  * @author Dmitry Stepanov
- * @version 1
+ * @version 3
  * @since 18.04.2020
  */
 public class BankService {
@@ -36,7 +36,7 @@ public class BankService {
      */
     public void addAccount(String passport, Account account) {
         User user = findByPasport(passport);
-        if (user != null && users.get(user).indexOf(account) < 0) {
+        if (user != null && users.get(user).indexOf(account) == -1) {
             users.get(user).add(account);
         }
     }
@@ -71,7 +71,7 @@ public class BankService {
         if (user != null) {
             List<Account> accountList = users.get(user);
             for (Account value : accountList) {
-                if (value.getRequisite().contains(requisite)) {
+                if (value.getRequisite().equals(requisite)) {
                     account = value;
                     break;
                 }
