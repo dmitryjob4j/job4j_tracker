@@ -1,9 +1,6 @@
 package ru.job4j.tracker;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 
 /**
  * 5. Реализовать класс Tracker[#242937]
@@ -30,6 +27,7 @@ public class Tracker {
     public Item add(Item item) {
         item.setId(generateId());
         items.add(item);
+        Collections.sort(items, new SortByNameItem());
         return item;
     }
 
