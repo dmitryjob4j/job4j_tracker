@@ -1,9 +1,13 @@
 package ru.job4j.collection;
 
 /**
- * 0. Сортировка[#242845]
- * пример
- * сортировка модели данных Comparable
+ * 2. Комбинированный компаратор.[#242844]
+ * задание.
+ * модель данных Job
+ *
+ * @author Dmitry Stepanov
+ * @version 1
+ * @since 20.04.2020
  */
 public class Job implements Comparable<Job> {
     private String name;
