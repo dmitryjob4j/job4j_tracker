@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
 
 public class SortByNameItemTest {
     @Test
-    public void SortByName() {
+    public void sortByName() {
         List<Item> items = Arrays.asList(
                 new Item("B"),
                 new Item("C"),
@@ -31,7 +31,7 @@ public class SortByNameItemTest {
     }
 
     @Test
-    public void SortByNameReverse() {
+    public void sortByNameReverse() {
         List<Item> items = Arrays.asList(
                 new Item("B"),
                 new Item("C"),

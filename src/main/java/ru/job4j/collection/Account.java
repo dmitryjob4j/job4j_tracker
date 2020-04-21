@@ -42,10 +42,6 @@ public class Account {
     @Override
     public String toString() {
         //noinspection CheckStyle
-        return "Account{" +
-                "passport='" + passport + '\'' +
-                ", username='" + username + '\'' +
-                ", deposit='" + deposit + '\'' +
-                '}';
+        return "Account{" + "passport='" + passport + '\'' + ", username='" + username + '\'' + ", deposit='" + deposit + '\'' + '}';
     }
 }
