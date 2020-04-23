@@ -6,7 +6,7 @@
 
     <groupId>ru.job4j</groupId>
     <artifactId>tracker</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
     <version>3.0</version>
 
     <properties>
