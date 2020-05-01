@@ -1,14 +1,17 @@
 package ru.job4j.search;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.function.Predicate;
 
 /**
- * 1. Телефонный справочник на базе ArrayList[#242847]
- * Задание.
+ * 1. Labmda
+ * 6. функции высшего порядка
+ * задание
  *
  * @author Dmitry Stepanov
  * @version 1
- * @since 13.04.2020
+ * @since 01.05.2020
  */
 public class PhoneDictionary {
     private ArrayList<Person> persons = new ArrayList<Person>();
@@ -25,9 +28,18 @@ public class PhoneDictionary {
      */
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<Person>();
-        for (Person value : persons) {
-            if (value.getName().contains(key) || value.getSurname().contains(key) || value.getPhone().contains(key) || value.getAddress().contains(key)) {
-                result.add(new Person(value.getName(), value.getSurname(), value.getPhone(), value.getAddress()));
+       /* for (Person person : persons) {
+            if (person.getName().contains(key) || person.getSurname().contains(key) || person.getPhone().contains(key) || person.getAddress().contains(key)) {
+                result.add(person);
+            }
+        }*/
+        Predicate<Person> combine = x -> x.getName().contains(key)
+                || x.getSurname().contains(key)
+                || x.getPhone().contains(key)
+                || x.getAddress().contains(key);
+        for (Person person : persons) {
+            if (combine.test(person)) {
+                result.add(person);
             }
         }
         return result;

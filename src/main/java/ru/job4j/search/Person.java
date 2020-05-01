@@ -1,11 +1,13 @@
 package ru.job4j.search;
 
 /**
- * 1. Телефонный справочник на базе ArrayList[#242847]
- * Задание
+ * 1. Labmda
+ * 6. функции высшего порядка
+ * задание
+ *
  * @author Dmitry Stepanov
  * @version 1
- * @since 13.04.2020
+ * @since 01.05.2020
  */
 public class Person {
     private String name;

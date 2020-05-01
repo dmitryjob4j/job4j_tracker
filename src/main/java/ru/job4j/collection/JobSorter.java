@@ -2,6 +2,7 @@ package ru.job4j.collection;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -22,6 +23,11 @@ public class JobSorter {
         Collections.sort(jobs, new SortByNameJob());
         System.out.println(jobs);
         Collections.sort(jobs, new SortByNameJob().reversed());
+        System.out.println(jobs);
+        Comparator<Job> comparatorName = Comparator.comparing(Job::getName);
+        Comparator<Job> comparatorPriority = Comparator.comparingInt(Job::getPriority);
+        Comparator<Job> cmbine = comparatorName.thenComparing(comparatorPriority);
+        jobs.sort(cmbine);
         System.out.println(jobs);
     }
 }

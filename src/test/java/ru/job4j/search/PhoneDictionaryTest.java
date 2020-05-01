@@ -8,7 +8,8 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 /**
- * 1. Телефонный справочник на базе ArrayList[#242847]
+ * 1. Labmda
+ * 6. функции высшего порядка
  * Задание
  * Тест
  *
