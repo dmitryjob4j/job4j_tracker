@@ -21,8 +21,6 @@ public class SchoolTest {
     public void listStudentToMapFioStudent() {
         List<Student> input = List.of(
                 new Student("Stepanov", 10),
-                new Student("Arsentev", 100),
-                new Student("Stepanov", 10),
                 new Student("Arsentev", 100)
         );
         School school = new School();

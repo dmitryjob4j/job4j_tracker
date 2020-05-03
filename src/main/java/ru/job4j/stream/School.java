@@ -36,7 +36,6 @@ public class School {
      */
     public Map<String, Student> toMap(List<Student> students) {
         Map<String, Student> result = students.stream()
-                .distinct()
                 .collect(
                         Collectors.toMap(
                                 student -> student.getFio(),
