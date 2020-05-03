@@ -4,17 +4,23 @@ import java.util.Objects;
 
 /**
  * 2. Stream API
- * 1. Фильтрация учеников.[#242706]
- * модель данных Student
+ * 4. Преобразование List в Map. [#242709]
+ * модель данных Student fio, score
  *
  * @author D.Stepanov
- * @since 2.05.2020
+ * @since 3.05.2020
  */
 public class Student {
+    private String fio;
     private int score;
 
-    public Student(int score) {
+    public Student(String fio, int score) {
+        this.fio = fio;
         this.score = score;
+    }
+
+    public String getFio() {
+        return fio;
     }
 
     public int getScore() {
@@ -30,11 +36,12 @@ public class Student {
             return false;
         }
         Student student = (Student) o;
-        return score == student.score;
+        return score == student.score
+                && Objects.equals(fio, student.fio);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(score);
+        return Objects.hash(fio, score);
     }
 }
