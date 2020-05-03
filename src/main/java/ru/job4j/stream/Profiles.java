@@ -18,10 +18,10 @@ public class Profiles {
      * @return
      */
     public List<Address> collect(List<Profile> profiles) {
-        Comparator<Address> comparator = (l, r) -> l.getCity().compareTo(r.getCity());
+        /*Comparator<Address> comparator = (l, r) -> l.getCity().compareTo(r.getCity());*/
         List<Address> result = profiles.stream().map(
                 profile -> profile.getAddress()
-        ).sorted(comparator).distinct().collect(Collectors.toList());
+        ).sorted(Comparator.comparing(Address::getCity)).distinct().collect(Collectors.toList());
         return result;
     }
 }
