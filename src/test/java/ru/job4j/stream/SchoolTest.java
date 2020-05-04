@@ -14,6 +14,7 @@ import java.util.Map;
  * тесты
  *
  * @author D.Stepanov
+ * @version 3
  * @since 3.05.2020
  */
 public class SchoolTest {
@@ -21,12 +22,14 @@ public class SchoolTest {
     public void listStudentToMapFioStudent() {
         List<Student> input = List.of(
                 new Student("Stepanov", 10),
-                new Student("Arsentev", 100)
+                new Student("Stepanov", 20),
+                new Student("Arsentev", 100),
+                new Student("Arsentev", 50)
         );
         School school = new School();
         Map<String, Student> result = school.toMap(input);
         Map<String, Student> expect = Map.of(
-                "Stepanov", new Student("Stepanov", 10),
+                "Stepanov", new Student("Stepanov", 20),
                 "Arsentev", new Student("Arsentev", 100)
         );
         assertThat(result, is(expect));

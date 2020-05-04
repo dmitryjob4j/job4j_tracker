@@ -11,6 +11,7 @@ import java.util.List;
  * класс сортировки student
  *
  * @author D.Stepanov
+ * @version 3
  * @since 3.05.2020
  */
 public class School {
@@ -38,8 +39,9 @@ public class School {
         Map<String, Student> result = students.stream()
                 .collect(
                         Collectors.toMap(
-                                student -> student.getFio(),
-                                student -> student
+                                k -> k.getFio(),
+                                v -> v,
+                                (k1, k2) -> k1.getScore() > k2.getScore() ? k1 : k2
                         )
                 );
         return result;
