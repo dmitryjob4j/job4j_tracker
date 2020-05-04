@@ -1,17 +1,17 @@
 package ru.job4j.bank;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
- * 3. Банковские переводы.[#242857]
+ * 6. Тестовое задание из модуля коллекции Lite переделать на Stream API.[#242704]
  * задача.
  *
  * @author Dmitry Stepanov
- * @version 3
- * @since 18.04.2020
+ * @version 1
+ * @since 04.05.2020
  */
 public class BankService {
     /**
@@ -48,13 +48,18 @@ public class BankService {
      * @return
      */
     public User findByPasport(String passport) {
-        User rsl = null;
-        for (User user : users.keySet()) {
+        /*User rsl = null;*/
+
+        /*for (User user : users.keySet()) {
             if (user.getPassport().equals(passport)) {
                 rsl = user;
                 break;
             }
-        }
+        }*/
+        User rsl = users.entrySet().stream()
+                .filter(user -> user.getKey().getPassport().equals(passport))
+                .map(Map.Entry::getKey)
+                .findAny().orElse(null);
         return rsl;
     }
 
@@ -66,17 +71,11 @@ public class BankService {
      * @return
      */
     public Account findByRequisite(String passport, String requisite) {
-        Account account = null;
         User user = findByPasport(passport);
-        if (user != null) {
-            List<Account> accountList = users.get(user);
-            for (Account value : accountList) {
-                if (value.getRequisite().equals(requisite)) {
-                    account = value;
-                    break;
-                }
-            }
-        }
+        Account account = user == null ? null : users.get(user)
+                .stream()
+                .filter(a -> a.getRequisite().equals(requisite))
+                .findAny().orElse(null);
         return account;
     }
 
@@ -95,7 +94,9 @@ public class BankService {
         boolean rsl = false;
         Account scrAccount = findByRequisite(scrPassport, scrRequisite);
         Account destAccount = findByRequisite(destPassport, destRequisite);
-        if (scrAccount != null && destAccount != null && scrAccount.getBalance() >= amount) {
+        if (scrAccount != null
+                && destAccount != null
+                && scrAccount.getBalance() >= amount) {
             scrAccount.setBalance(scrAccount.getBalance() - amount);
             destAccount.setBalance(destAccount.getBalance() + amount);
             rsl = true;

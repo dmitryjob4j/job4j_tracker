@@ -6,12 +6,12 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.*;
 
 /**
- * 3. Банковские переводы.[#242857]
+ * 6. Тестовое задание из модуля коллекции Lite переделать на Stream API.[#242704]
  * тесты
  *
  * @author Dmitry Stepanov
  * @version 1
- * @since 18.04.2020
+ * @since 04.05.2020
  */
 public class BankServiceTest {
     @Test
