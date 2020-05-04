@@ -1,20 +1,38 @@
 package ru.job4j.stream;
 
+import java.util.Comparator;
 import java.util.Map;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
- * 2. Stream API
- * 4. Преобразование List в Map. [#242709]
+ * 3. Jdk 1.9, 1.10 Нововведения.
+ * 0. Stream API улучшения[#242712]
  * класс сортировки student
  *
  * @author D.Stepanov
- * @version 3
- * @since 3.05.2020
+ * @version 1
+ * @since 4.05.2020
  */
 public class School {
+    /**
+     * Метод levelOf вернуть список студентов у которых балл аттестата больше bound
+     *
+     * @param student
+     * @param bound
+     * @return
+     */
+    public List<Student> levelOf(List<Student> student, int bound) {
+        List<Student> result = student.stream()
+                .flatMap(Stream::ofNullable)
+                .sorted(Comparator.comparing(Student::getScore).reversed())
+                .takeWhile(s -> s.getScore() > bound)
+                .collect(Collectors.toList());
+        return result;
+    }
+
     /**
      * мотод сортирует студентов по количеству баллов
      *

@@ -3,16 +3,19 @@ package ru.job4j.stream;
 import java.util.Objects;
 
 /**
- * 2. Stream API
- * 4. Преобразование List в Map. [#242709]
+ * 3. Jdk 1.9, 1.10 Нововведения.
+ * 0. Stream API улучшения[#242712]
  * модель данных Student fio, score
  *
  * @author D.Stepanov
- * @since 3.05.2020
+ * @since 4.05.2020
  */
 public class Student {
     private String fio;
     private int score;
+
+    public Student() {
+    }
 
     public Student(String fio, int score) {
         this.fio = fio;

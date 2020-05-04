@@ -9,15 +9,34 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 2. Stream API
- * 4. Преобразование List в Map. [#242709]
+ * 3. Jdk 1.9, 1.10 Нововведения.
+ * 0. Stream API улучшения[#242712]
  * тесты
  *
  * @author D.Stepanov
- * @version 3
- * @since 3.05.2020
+ * @version 1
+ * @since 4.05.2020
  */
 public class SchoolTest {
+    @Test
+    public void listOfStudentScoreOfBoundAndNullElement() {
+        List<Student> input = List.of(
+                new Student("Stepanov", 10),
+                new Student("Stepanov", 55),
+                new Student(),
+                new Student("Arsentev", 100),
+                new Student(),
+                new Student("Arsentev", 50)
+        );
+        School school = new School();
+        List<Student> result = school.levelOf(input, 50);
+        List<Student> expect = List.of(
+                new Student("Arsentev", 100),
+                new Student("Stepanov", 55)
+        );
+        assertThat(result, is(expect));
+    }
+
     @Test
     public void listStudentToMapFioStudent() {
         List<Student> input = List.of(
