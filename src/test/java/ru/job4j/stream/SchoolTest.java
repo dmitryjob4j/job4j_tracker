@@ -5,6 +5,8 @@ import org.junit.Test;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -14,20 +16,21 @@ import java.util.Map;
  * тесты
  *
  * @author D.Stepanov
- * @version 1
+ * @version 2
  * @since 4.05.2020
  */
 public class SchoolTest {
     @Test
     public void listOfStudentScoreOfBoundAndNullElement() {
-        List<Student> input = List.of(
+        List<Student> input = Arrays.asList(
                 new Student("Stepanov", 10),
                 new Student("Stepanov", 55),
-                new Student(),
+                null,
                 new Student("Arsentev", 100),
-                new Student(),
+                null,
                 new Student("Arsentev", 50)
         );
+
         School school = new School();
         List<Student> result = school.levelOf(input, 50);
         List<Student> expect = List.of(
