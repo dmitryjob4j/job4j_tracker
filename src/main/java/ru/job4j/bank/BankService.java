@@ -10,7 +10,7 @@ import java.util.stream.Stream;
  * задача.
  *
  * @author Dmitry Stepanov
- * @version 1
+ * @version 2
  * @since 04.05.2020
  */
 public class BankService {
@@ -48,17 +48,8 @@ public class BankService {
      * @return
      */
     public User findByPasport(String passport) {
-        /*User rsl = null;*/
-
-        /*for (User user : users.keySet()) {
-            if (user.getPassport().equals(passport)) {
-                rsl = user;
-                break;
-            }
-        }*/
-        User rsl = users.entrySet().stream()
-                .filter(user -> user.getKey().getPassport().equals(passport))
-                .map(Map.Entry::getKey)
+        User rsl = users.keySet().stream()
+                .filter(user -> user.getPassport().equals(passport))
                 .findAny().orElse(null);
         return rsl;
     }
