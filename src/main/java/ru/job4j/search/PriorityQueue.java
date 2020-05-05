@@ -3,6 +3,8 @@ package ru.job4j.search;
 import java.util.LinkedList;
 
 /**
+ * 3. Jdk 1.9, 1.10 Нововведения.
+ * 2. Local-Variable Type Inference[#242714]
  * 2. Очередь с приоритетом на LinkedList[#242848]
  * задача
  *
@@ -14,8 +16,8 @@ public class PriorityQueue {
     private LinkedList<Task> tasks = new LinkedList<>();
 
     public void put(Task task) {
-        int index = 0;
-        for (Task element : tasks) {
+        var index = 0;
+        for (var element : tasks) {
             if (task.getPriority() < element.getPriority()) {
                 break;
             }

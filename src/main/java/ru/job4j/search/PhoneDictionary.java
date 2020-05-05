@@ -5,13 +5,15 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 /**
+ * 3. Jdk 1.9, 1.10 Нововведения.
+ * 2. Local-Variable Type Inference[#242714]
  * 1. Labmda
  * 6. функции высшего порядка
  * задание
  *
  * @author Dmitry Stepanov
  * @version 1
- * @since 01.05.2020
+ * @since 05.05.2020
  */
 public class PhoneDictionary {
     private ArrayList<Person> persons = new ArrayList<Person>();
@@ -27,7 +29,7 @@ public class PhoneDictionary {
      * @return Список подошедших пользователей.
      */
     public ArrayList<Person> find(String key) {
-        ArrayList<Person> result = new ArrayList<Person>();
+        var result = new ArrayList<Person>();
        /* for (Person person : persons) {
             if (person.getName().contains(key) || person.getSurname().contains(key) || person.getPhone().contains(key) || person.getAddress().contains(key)) {
                 result.add(person);
